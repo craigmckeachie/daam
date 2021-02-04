@@ -14,6 +14,7 @@ export function App() {
 
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="dark-content" hidden={true} />
       <Landing {...state} />
     </View>
   );
