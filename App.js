@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { StyleSheet, View } from "react-native";
 import { Landing } from "./Landing";
+import { Checkout } from "./Checkout";
 
 export function App() {
   const state = useSelector(state => state);
@@ -15,7 +16,8 @@ export function App() {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" hidden={true} />
-      <Landing {...state} />
+      {/* <Landing {...state} /> */}
+      <Checkout />
     </View>
   );
 }
