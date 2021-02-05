@@ -7,9 +7,7 @@ export function FilmBrief({ film, isSelected }) {
   const dispatch = useDispatch();
   function selectThisFilm() {
     dispatch({ type: "SET_SELECTED_FILM", film });
-  }
-  if (isSelected) {
-    console.log(`This ${film.title}`);
+    dispatch({ type: "SHOW_FILM_DETAILS" });
   }
 
   return (

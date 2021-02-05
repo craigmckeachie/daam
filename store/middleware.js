@@ -4,7 +4,7 @@ const fetchFilmsMiddleware = ({
   getState
 }) => next => async action => {
   if (action.type === "FETCH_FILMS") {
-    console.log(`${host}/api/films`);
+    // console.log(`${host}/api/films`);
     fetch(`${host}/api/films`)
       .then(response => response.json())
       .then(films => {
