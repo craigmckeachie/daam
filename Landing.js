@@ -1,5 +1,14 @@
 import React from "react";
-import { ScrollView, Text, SafeAreaView, Modal, Button } from "react-native";
+import {
+  View,
+  ScrollView,
+  Text,
+  SafeAreaView,
+  Modal,
+  Button,
+  Image,
+  StyleSheet
+} from "react-native";
 import { FilmBrief } from "./FilmBrief";
 import { DatePicker } from "./DatePicker";
 import { useDispatch } from "react-redux";
@@ -27,7 +36,13 @@ export function Landing({
         />
       </Modal>
       <ScrollView>
-        <Text>Dinner And a Movie!</Text>
+        <View style={styles.header}>
+          <Image
+            source={require("./assets/daam.png")}
+            style={{ height: 75, width: 75 }}
+          />
+          <Text>Dinner And a Movie</Text>
+        </View>
         <Text>
           Tap a film to see the details and pick a date to see showtimes.
         </Text>
@@ -45,3 +60,9 @@ export function Landing({
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  header: {
+    flexDirection: "row"
+  }
+});
