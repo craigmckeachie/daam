@@ -39,7 +39,7 @@ const text = {
     fontFamily: Platform.OS === "ios" ? "Helvetica" : "Roboto",
     fontSize: 20,
     fontWeight: "bold",
-    padding: spacing.m,
+    // padding: spacing.m,
     color: colors.mainDark
   },
   normal: {
@@ -50,7 +50,7 @@ const text = {
   },
   note: {
     fontFamily: Platform.OS === "ios" ? "Helvetica" : "Roboto",
-    fontSize: 12,
+    fontSize: 14,
     padding: spacing.s,
     color: colors.altDark
   }
@@ -59,7 +59,7 @@ const text = {
 const screen = {
   flex: 1,
   width: 400,
-  padding: spacing.l
+  margin: spacing.l
 };
 
 export const theme = {
