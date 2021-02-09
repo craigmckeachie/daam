@@ -1,20 +1,13 @@
 import tables from "./assets/tables.json";
 
 import React from "react";
-import {
-  SafeAreaView,
-  ScrollView,
-  View,
-  Text,
-  StyleSheet,
-  Button
-} from "react-native";
+import { SafeAreaView, View, Text, StyleSheet, Button } from "react-native";
 import { Title } from "./Title";
-import { NormalText } from "./NormalText";
+
 import { ScrollScreen } from "./ScrollScreen";
 import { theme } from "./theme";
 import { NoteText } from "./NoteText";
-
+import { SeatBox } from "./SeatBox";
 export default function PickSeats() {
   return (
     <SafeAreaView>
@@ -33,17 +26,7 @@ export default function PickSeats() {
 
             <View style={styles.seatsWrapper}>
               {table.seats.map(seat => (
-                <View
-                  style={{
-                    backgroundColor: "#ddd",
-                    margin: theme.spacing.s,
-                    padding: theme.spacing.s
-                  }}
-                >
-                  <NormalText style={{ color: "white" }}>
-                    Seat {seat.seat_number}
-                  </NormalText>
-                </View>
+                <SeatBox number={seat.seat_number} status={seat.status} />
               ))}
             </View>
           </View>
