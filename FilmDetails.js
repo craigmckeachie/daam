@@ -1,31 +1,51 @@
 import React from "react";
-import { View, ScrollView, Text, Image, StyleSheet } from "react-native";
+import {
+  View,
+  ScrollView,
+  Text,
+  Image,
+  StyleSheet,
+  SafeAreaView
+} from "react-native";
 import { ShowingTimes } from "./ShowingTimes";
 import { host } from "./store/api_host_maker";
+import { theme } from "./theme";
+import { Title } from "./Title";
+import { NormalText } from "./NormalText";
+import { ScrollScreen } from "./ScrollScreen";
 
 export function FilmDetails({ film, selected_date, showings = [] }) {
   return (
-    <ScrollView>
-      <View>
-        <View style="styles.posterContainer">
-          <Image
-            source={{ uri: `${host}/${film.poster_path}` }}
-            style={styles.poster}
-          />
-        </View>
-        <ShowingTimes selected_date={selected_date} showings={showings} />
-        <Text>{film.title}</Text>
-        <Text>{film.runtime} minutes</Text>
-        <Text>{film.tagline}</Text>
-        <Text>{film.overview}</Text>
+    <ScrollScreen>
+      <SafeAreaView>
+        <View>
+          <View style="styles.posterContainer">
+            <Image
+              source={{ uri: `${host}/${film.poster_path}` }}
+              style={styles.poster}
+            />
+          </View>
+          <ShowingTimes selected_date={selected_date} showings={showings} />
+          <Title>{film.title}</Title>
+          <NormalText>{film.runtime} minutes</NormalText>
+          <NormalText>{film.tagline}</NormalText>
+          <NormalText>{film.overview}</NormalText>
 
-        <Text>Release Data: {new Date(film.release_date).toDateString()}</Text>
-        <View style={styles.votesContainer}>
-          <Text style={{ flex: 3 }}>Rating: {film.vote_average}/10</Text>
-          <Text style={{ flex: 2 }}>Votes: {film.vote_count}</Text>
+          <NormalText>
+            Release Date: {new Date(film.release_date).toDateString()}
+          </NormalText>
+          <View style={styles.votesContainer}>
+            <NormalText style={{ flex: 3 }}>
+              Rating: {film.vote_average}/
+              <Text style={theme.text.note}>10</Text>
+            </NormalText>
+            <NormalText style={{ flex: 2 }}>
+              Votes: {film.vote_count}
+            </NormalText>
+          </View>
         </View>
-      </View>
-    </ScrollView>
+      </SafeAreaView>
+    </ScrollScreen>
   );
 }
 

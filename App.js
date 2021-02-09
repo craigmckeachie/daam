@@ -19,8 +19,9 @@ export function App() {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" hidden={true} />
-
-      <Checkout />
+      <Landing {...state} />
+      {/* <PickSeats /> */}
+      {/* <Checkout /> */}
     </View>
   );
 }

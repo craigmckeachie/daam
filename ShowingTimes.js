@@ -1,15 +1,19 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { NormalText } from "./NormalText";
+import { theme } from "./theme";
 
 export function ShowingTimes({ selected_date, showings = [] }) {
   return (
     <View>
-      <Text>Showing times for {selected_date.toShowingDateString()}</Text>
+      <Text style={{ ...theme.text.subtitle, textAlign: "center" }}>
+        Showing times for {selected_date.toDateString()}
+      </Text>
       <View style={styles.showingsContainer}>
         {showings.map(showing => (
-          <Text key={showing.id}>
+          <NormalText key={showing.id}>
             {showing.showing_time.toShowingTimeString()}
-          </Text>
+          </NormalText>
         ))}
       </View>
     </View>

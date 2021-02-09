@@ -9,13 +9,14 @@ import {
   StyleSheet,
   Button
 } from "react-native";
+import { Title } from "./Title";
 
 export default function PickSeats() {
   return (
     <SafeAreaView>
       <ScrollView style={{ width: 400 }}>
         <Text>Choose your seats for</Text>
-        <Text>Movie Title</Text>
+        <Title>Movie Title</Title>
         <Text>on</Text>
         <Text>{new Date().toShowingDateString()}</Text>
         <Text>at {new Date().toShowingTimeString()}</Text>

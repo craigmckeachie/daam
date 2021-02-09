@@ -7,8 +7,9 @@ import {
   Platform
 } from "react-native";
 import { useDispatch } from "react-redux";
+import { theme } from "./theme";
 
-export function DatePicker({ selected_date }) {
+export function DatePicker({ selected_date, style }) {
   const [showIosPicker, setShowIosPicker] = useState(false);
   const dispatch = useDispatch();
   const showModal = async () => {
@@ -32,7 +33,7 @@ export function DatePicker({ selected_date }) {
   };
 
   return (
-    <View>
+    <View style={{ margin: theme.spacing.m }}>
       <Button
         onPress={() => showModal()}
         title={`Showing times for ${selected_date.toDateString()}`}

@@ -13,6 +13,9 @@ import { FilmBrief } from "./FilmBrief";
 import { DatePicker } from "./DatePicker";
 import { useDispatch } from "react-redux";
 import { FilmDetails } from "./FilmDetails";
+import { theme } from "./theme";
+import { ScrollScreen } from "./ScrollScreen";
+import { NormalText } from "./NormalText";
 
 export function Landing({
   films,
@@ -35,19 +38,21 @@ export function Landing({
           onPress={() => dispatch({ type: "HIDE_FILM_DETAILS" })}
         />
       </Modal>
-      <ScrollView>
+      <ScrollScreen>
         <View style={styles.header}>
           <Image
-            source={require("./assets/daam.png")}
-            style={{ height: 75, width: 75 }}
+            source={require("./assets/daam-logo.png")}
+            style={{ height: 70, width: 160 }}
           />
-          <Text>Dinner And a Movie</Text>
         </View>
-        <Text>
+        <NormalText style={{ padding: theme.spacing.m }}>
           Tap a film to see the details and pick a date to see showtimes.
-        </Text>
+        </NormalText>
 
-        <DatePicker selected_date={selected_date} />
+        <DatePicker
+          style={{ padding: theme.spacing.xl }}
+          selected_date={selected_date}
+        />
 
         {films.map(film => (
           <FilmBrief
@@ -56,13 +61,17 @@ export function Landing({
             isSelected={film === selected_film}
           />
         ))}
-      </ScrollView>
+      </ScrollScreen>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   header: {
-    flexDirection: "row"
+    flexDirection: "row",
+    borderBottomColor: theme.colors.mainDark,
+    borderBottomWidth: 1,
+    padding: theme.spacing.l,
+    justifyContent: "center"
   }
 });
