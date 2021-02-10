@@ -26,7 +26,11 @@ export default function PickSeats() {
 
             <View style={styles.seatsWrapper}>
               {table.seats.map(seat => (
-                <SeatBox number={seat.seat_number} status={seat.status} />
+                <SeatBox
+                  key={seat._id}
+                  number={seat.seat_number}
+                  status={seat.status}
+                />
               ))}
             </View>
           </View>

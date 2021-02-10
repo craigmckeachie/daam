@@ -22,14 +22,16 @@ const spacing = {
   s: 5,
   m: 10,
   l: 20,
-  xl: 30
+  xl: 30,
+  xxl: 50
 };
 
 const text = {
   headline: {
     fontFamily: Platform.OS === "ios" ? "Helvetica" : "Roboto",
     fontWeight: "bold",
-    fontSize: 32
+    fontSize: 32,
+    color: colors.mainDark
   },
   title: {
     fontFamily: Platform.OS === "ios" ? "Helvetica" : "Roboto",
@@ -56,11 +58,30 @@ const text = {
     fontSize: 14,
     padding: spacing.s,
     color: colors.altDark
+  },
+  label: {
+    fontFamily: Platform.OS === "ios" ? "Helvetica" : "Roboto",
+    fontSize: 18,
+    padding: spacing.s,
+    color: colors.mainDark
+  },
+  input: {
+    fontFamily: Platform.OS === "ios" ? "Helvetica" : "Roboto",
+    borderColor: colors.altDark,
+    borderBottomWidth: 1,
+    borderWidth: 1,
+    style: {
+      minHeight: spacing.xxl,
+      marginBottom: spacing.m,
+      marginTop: spacing.m,
+      padding: spacing.s
+    }
   }
 };
 
 const screen = {
-  flex: 1,
+  // flex: 1,
+  flexDirection: "column",
   width: 400,
   margin: spacing.l
 };

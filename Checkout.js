@@ -14,6 +14,9 @@ import { Headline } from "./Headline";
 import { Title } from "./Title";
 import { NormalText } from "./NormalText";
 import { theme } from "./theme";
+import { AppTextInput } from "./AppTextInput";
+import { Label } from "./Label";
+import { ScrollScreen } from "./ScrollScreen";
 
 export function Checkout(props) {
   const [firstName, setFirstName] = useState(props.firstName);
@@ -30,9 +33,8 @@ export function Checkout(props) {
   return (
     <SafeAreaView>
       <KeyboardAvoidingView behavior="position">
-        <ScrollView>
+        <ScrollScreen>
           <Headline>Checkout</Headline>
-
           <View style={styles.cart}>
             <Title>Your cart</Title>
             <View>
@@ -62,31 +64,42 @@ export function Checkout(props) {
           </View>
 
           <View style={styles.cart}>
-            <NormalText>First name</NormalText>
-            <TextInput value={firstName} onChangeText={setFirstName} />
-            <NormalText>Last name</NormalText>
-            <TextInput value={lastName} onChangeText={setLastName} />
-            <NormalText>Credit Card</NormalText>
-            <TextInput
+            <Label>First Name</Label>
+            <AppTextInput
+              value={firstName}
+              onChangeText={setFirstName}
+              placeholder="First Name"
+            />
+            <Label>Last Name</Label>
+            <AppTextInput
+              value={lastName}
+              onChangeText={setLastName}
+              placeholder="Last Name"
+            />
+            <Label>Credit Card</Label>
+            <AppTextInput
               value={creditCard}
               onChangeText={setCreditCard}
               keyboardType="number-pad"
+              placeholder="Credit Card"
             />
-            <NormalText>Email</NormalText>
-            <TextInput
+            <Label>Email</Label>
+            <AppTextInput
               value={email}
               onChangeText={setEmail}
               keyboardType="email-address"
+              placeholder="Email"
             />
-            <NormalText>Phone</NormalText>
-            <TextInput
+            <Label>Phone</Label>
+            <AppTextInput
               value={phone}
               onChangeText={setPhone}
               keyboardType="phone-pad"
+              placeholder="Phone"
             />
             <Button title="Purchase" onPress={purchase} />
           </View>
-        </ScrollView>
+        </ScrollScreen>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
