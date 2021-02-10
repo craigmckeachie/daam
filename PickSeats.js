@@ -8,7 +8,14 @@ import { ScrollScreen } from "./ScrollScreen";
 import { theme } from "./theme";
 import { NoteText } from "./NoteText";
 import { SeatBox } from "./SeatBox";
+import { useRoute, useNavigation } from "@react-navigation/native";
 export default function PickSeats() {
+  const route = useRoute();
+  const navigation = useNavigation();
+  console.log(route.params.showing);
+  function handleCheckout() {
+    navigation.navigate("Checkout");
+  }
   return (
     <SafeAreaView>
       <ScrollScreen>
@@ -36,7 +43,7 @@ export default function PickSeats() {
           </View>
         ))}
         <View style={styles.buttonWrapper}>
-          <Button title="Check out" />
+          <Button title="Check Out" onPress={() => handleCheckout()} />
         </View>
       </ScrollScreen>
     </SafeAreaView>
