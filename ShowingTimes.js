@@ -10,7 +10,7 @@ export function ShowingTimes({ selected_date, showings = [] }) {
   const navigation = useNavigation();
   function pickShowingTime(showing) {
     dispatch({ type: "HIDE_FILM_DETAILS" });
-    navigation.push("PickSeats", { showing });
+    navigation.push("PickSeats", { showingId: showing.id });
   }
   return (
     <View>
