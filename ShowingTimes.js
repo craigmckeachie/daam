@@ -8,6 +8,7 @@ import { useNavigation } from "@react-navigation/native";
 export function ShowingTimes({ selected_date, showings = [] }) {
   const dispatch = useDispatch();
   const navigation = useNavigation();
+
   function pickShowingTime(showing) {
     dispatch({ type: "HIDE_FILM_DETAILS" });
     dispatch({ type: "SET_SELECTED_SHOWING", selected_showing: showing });
@@ -29,7 +30,7 @@ export function ShowingTimes({ selected_date, showings = [] }) {
             key={showing.id}
             onPress={() => pickShowingTime(showing)}
           >
-            {showing.showing_time.toShowingTimeString()}
+            {new Date(showing.showing_time).toShowingTimeString()}
           </NormalText>
         ))}
       </View>
@@ -40,6 +41,7 @@ export function ShowingTimes({ selected_date, showings = [] }) {
 const styles = StyleSheet.create({
   showingsContainer: {
     flexDirection: "row",
-    justifyContent: "space-around"
+    justifyContent: "space-around",
+    flexWrap: "wrap"
   }
 });

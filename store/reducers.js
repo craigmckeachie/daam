@@ -26,7 +26,8 @@ export const reducer = (state, action) => {
       return { ...state, show_film_details: false };
     case "SET_SELECTED_SHOWING":
       return { ...state, selected_showing: action.selected_showing };
-
+    case "SET_SHOWINGS":
+      return { ...state, showings: action.showings };
     default:
       return state;
   }

@@ -22,7 +22,7 @@ export function Landing({
   selected_date,
   selected_film,
   show_film_details,
-  showings
+  showings = []
 }) {
   const dispatch = useDispatch();
   return (

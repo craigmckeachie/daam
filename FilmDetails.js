@@ -15,13 +15,6 @@ import { NormalText } from "./NormalText";
 import { ScrollScreen } from "./ScrollScreen";
 
 export function FilmDetails({ film, selected_date, showings = [] }) {
-  //TODO: Fake showings. Remove later.
-  showings = [
-    { id: 1, showing_time: new Date() },
-    { id: 2, showing_time: new Date() },
-    { id: 3, showing_time: new Date() },
-    { id: 5, showing_time: new Date() }
-  ];
   return (
     <ScrollScreen>
       <SafeAreaView>

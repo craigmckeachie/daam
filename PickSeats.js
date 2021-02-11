@@ -25,8 +25,12 @@ export default function PickSeats() {
           <NoteText>Choose your seats for</NoteText>
           <Title>{film.title}</Title>
           <NoteText>on</NoteText>
-          <NoteText>{showing.showing_time.toShowingDateString()}</NoteText>
-          <NoteText>at {showing.showing_time.toShowingTimeString()}</NoteText>
+          <NoteText>
+            {new Date(showing.showing_time).toShowingDateString()}
+          </NoteText>
+          <NoteText>
+            at {new Date(showing.showing_time).toShowingTimeString()}
+          </NoteText>
         </View>
 
         {tables.map(table => (

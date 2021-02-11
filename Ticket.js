@@ -33,8 +33,8 @@ export function Ticket() {
         <Title style={{ flex: 1 }}>{film.title}</Title>
       </View>
       <NormalText style={{ fontSize: 24 }}>
-        {showing.showing_time.toShowingDateString()}{" "}
-        {showing.showing_time.toShowingTimeString()}
+        {new Date(showing.showing_time).toShowingDateString()}{" "}
+        {new Date(showing.showing_time).toShowingTimeString()}
       </NormalText>
       <NormalText style={{ fontSize: 24 }}>
         Ticket Number: {ticket_number}
