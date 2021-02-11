@@ -6,13 +6,9 @@ const initialState = {
   films: [],
   selected_date: new Date(),
   selected_film: {},
+  selected_showing: null,
   show_film_details: false,
-  showings: [
-    { id: 1, showing_time: new Date() },
-    { id: 2, showing_time: new Date() },
-    { id: 3, showing_time: new Date() },
-    { id: 4, showing_time: new Date() }
-  ],
+  showings: [],
   tables: []
 };
 export const store = createStore(

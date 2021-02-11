@@ -10,7 +10,8 @@ export function ShowingTimes({ selected_date, showings = [] }) {
   const navigation = useNavigation();
   function pickShowingTime(showing) {
     dispatch({ type: "HIDE_FILM_DETAILS" });
-    navigation.push("PickSeats", { showingId: showing.id });
+    dispatch({ type: "SET_SELECTED_SHOWING", selected_showing: showing });
+    navigation.push("PickSeats");
   }
   return (
     <View>
@@ -19,7 +20,15 @@ export function ShowingTimes({ selected_date, showings = [] }) {
       </Text>
       <View style={styles.showingsContainer}>
         {showings.map(showing => (
-          <NormalText key={showing.id} onPress={() => pickShowingTime(showing)}>
+          <NormalText
+            style={{
+              fontSize: 20,
+              padding: theme.spacing.m,
+              borderWidth: 0.25
+            }}
+            key={showing.id}
+            onPress={() => pickShowingTime(showing)}
+          >
             {showing.showing_time.toShowingTimeString()}
           </NormalText>
         ))}

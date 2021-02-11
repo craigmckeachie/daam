@@ -37,14 +37,16 @@ const text = {
     fontFamily: Platform.OS === "ios" ? "Helvetica" : "Roboto",
     fontSize: 24,
     fontWeight: "bold",
-    margin: spacing.s,
+    // margin: spacing.s,
+    marginTop: spacing.l,
+    marginBottom: spacing.l,
     color: colors.mainDark
   },
   subtitle: {
     fontFamily: Platform.OS === "ios" ? "Helvetica" : "Roboto",
     fontSize: 20,
     fontWeight: "bold",
-    // padding: spacing.m,
+    padding: spacing.l,
     color: colors.mainDark
   },
   normal: {

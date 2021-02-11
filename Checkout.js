@@ -17,6 +17,7 @@ import { theme } from "./theme";
 import { AppTextInput } from "./AppTextInput";
 import { Label } from "./Label";
 import { ScrollScreen } from "./ScrollScreen";
+import { useNavigation } from "@react-navigation/native";
 
 export function Checkout(props) {
   const [firstName, setFirstName] = useState(props.firstName);
@@ -27,8 +28,11 @@ export function Checkout(props) {
   const subtotal = cart.seats.reduce((total, seat) => (total += seat.price), 0);
   const tax = subtotal * 0.0825;
   const grandtotal = subtotal + tax;
+  const navigation = useNavigation();
 
-  function purchase() {}
+  function purchase() {
+    navigation.push("Ticket");
+  }
 
   return (
     <SafeAreaView>

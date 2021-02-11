@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { StyleSheet, View } from "react-native";
 import { Landing } from "./Landing";
 import { Checkout } from "./Checkout";
+import { Ticket } from "./Ticket";
 import "./helpers/Date.js";
 import "./helpers/Currency.js";
 import PickSeats from "./PickSeats";
@@ -39,6 +40,7 @@ export function App() {
             {() => <PickSeats />}
           </Stack.Screen>
           <Stack.Screen name="Checkout">{() => <Checkout />}</Stack.Screen>
+          <Stack.Screen name="Ticket">{() => <Ticket />}</Stack.Screen>
         </Stack.Navigator>
       </View>
       <StatusBar barStyle="dark-content" hidden={true} />

@@ -9,10 +9,12 @@ import { theme } from "./theme";
 import { NoteText } from "./NoteText";
 import { SeatBox } from "./SeatBox";
 import { useRoute, useNavigation } from "@react-navigation/native";
+import { useSelector } from "react-redux";
 export default function PickSeats() {
-  const route = useRoute();
   const navigation = useNavigation();
-  console.log(route.params.showing);
+  const film = useSelector(state => state.selected_film);
+  const showing = useSelector(state => state.selected_showing);
+
   function handleCheckout() {
     navigation.navigate("Checkout");
   }
@@ -21,10 +23,10 @@ export default function PickSeats() {
       <ScrollScreen>
         <View style={styles.heading}>
           <NoteText>Choose your seats for</NoteText>
-          <Title>Movie Title</Title>
+          <Title>{film.title}</Title>
           <NoteText>on</NoteText>
-          <NoteText>{new Date().toShowingDateString()}</NoteText>
-          <NoteText>at {new Date().toShowingTimeString()}</NoteText>
+          <NoteText>{showing.showing_time.toShowingDateString()}</NoteText>
+          <NoteText>at {showing.showing_time.toShowingTimeString()}</NoteText>
         </View>
 
         {tables.map(table => (
