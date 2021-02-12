@@ -11,6 +11,7 @@ import PickSeats from "./PickSeats";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { theme } from "./theme";
+import { SeatMap } from "./SeatMap";
 
 const appTheme = {
   ...DefaultTheme,
@@ -36,8 +37,11 @@ export function App() {
           <Stack.Screen name="Home">
             {() => <Landing {...state} />}
           </Stack.Screen>
-          <Stack.Screen name="PickSeats" options={{ title: "Pick Seats" }}>
+          {/* <Stack.Screen name="PickSeats" options={{ title: "Pick Seats" }}>
             {() => <PickSeats />}
+          </Stack.Screen> */}
+          <Stack.Screen name="SeatMap" options={{ title: "Pick Seats" }}>
+            {() => <SeatMap />}
           </Stack.Screen>
           <Stack.Screen name="Checkout">{() => <Checkout />}</Stack.Screen>
           <Stack.Screen name="Ticket">{() => <Ticket />}</Stack.Screen>

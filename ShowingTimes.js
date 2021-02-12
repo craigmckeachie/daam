@@ -12,7 +12,7 @@ export function ShowingTimes({ selected_date, showings = [] }) {
   function pickShowingTime(showing) {
     dispatch({ type: "HIDE_FILM_DETAILS" });
     dispatch({ type: "SET_SELECTED_SHOWING", selected_showing: showing });
-    navigation.push("PickSeats");
+    navigation.push("SeatMap");
   }
   return (
     <View>
