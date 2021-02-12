@@ -37,6 +37,30 @@ const fetchShowingsForDateMiddleware = ({
   }
 };
 
+const fetchTablesAndSeatsMiddleware = ({ dispatch }) => next => action => {
+  const { theater_id } = action;
+  if (action.type === "FETCH_TABLES_AND_SEATS") {
+    fetch(`${host}/api/theaters/${theater_id}/tables`)
+      .then(res => res.json())
+      .then(tables => dispatch({ type: "SET_TABLES", tables }))
+      .catch(err => console.error("Couldn't fetch tables", err));
+  }
+  return next(action);
+};
+
+const fetchReservationsMiddleware = ({ dispatch }) => next => action => {
+  if (action.type === "FETCH_RESERVATIONS") {
+    const id = action.showing_id;
+    fetch(`${host}/api/showings/${id}/reservations/`)
+      .then(res => res.json())
+      .then(reservations =>
+        dispatch({ type: "SET_RESERVATIONS", reservations })
+      )
+      .catch(err => console.error("Couldn't fetch reservations", err));
+  }
+  next(action);
+};
+
 const loggingMiddleware = ({ getState }) => next => action => {
   if (getState().logging_enabled) {
     console.log({ action, state: getState() });
@@ -46,5 +70,7 @@ const loggingMiddleware = ({ getState }) => next => action => {
 export default [
   fetchFilmsMiddleware,
   fetchShowingsForDateMiddleware,
+  fetchTablesAndSeatsMiddleware,
+  fetchReservationsMiddleware,
   loggingMiddleware
 ];

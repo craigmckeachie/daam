@@ -1,6 +1,4 @@
-import tables from "./assets/tables.json";
-
-import React from "react";
+import React, { useEffect } from "react";
 import { SafeAreaView, View, Text, StyleSheet, Button } from "react-native";
 import { Title } from "./Title";
 
@@ -8,12 +6,32 @@ import { ScrollScreen } from "./ScrollScreen";
 import { theme } from "./theme";
 import { NoteText } from "./NoteText";
 import { SeatBox } from "./SeatBox";
-import { useRoute, useNavigation } from "@react-navigation/native";
-import { useSelector } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
+import { useSelector, useDispatch } from "react-redux";
 export default function PickSeats() {
   const navigation = useNavigation();
   const film = useSelector(state => state.selected_film);
   const showing = useSelector(state => state.selected_showing);
+  const tables = useSelector(state => state.tables);
+  const reservations = useSelector(state => state.reservations);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: "FETCH_TABLES_AND_SEATS",
+      theater_id: showing.theater_id
+    });
+    dispatch({ type: "FETCH_RESERVATIONS", showing_id: showing.id });
+  }, []);
+
+  useEffect(() => {
+    tables.forEach(table => {
+      table.seats.forEach(seat => {
+        if (reservations?.some(res => res.seat_id === seat.id))
+          seat.status = "seatIsTaken";
+      });
+    });
+  });
 
   function handleCheckout() {
     navigation.navigate("Checkout");
@@ -34,7 +52,7 @@ export default function PickSeats() {
         </View>
 
         {tables.map(table => (
-          <View style={styles.table} key={table.id}>
+          <View style={styles.table} key={table.table_number}>
             <Text style={theme.text.subtitle}>Table {table.table_number}</Text>
 
             <View style={styles.seatsWrapper}>

@@ -28,6 +28,10 @@ export const reducer = (state, action) => {
       return { ...state, selected_showing: action.selected_showing };
     case "SET_SHOWINGS":
       return { ...state, showings: action.showings };
+    case "SET_TABLES":
+      return { ...state, tables: action.tables };
+    case "SET_RESERVATIONS":
+      return { ...state, reservations: action.reservations };
     default:
       return state;
   }
